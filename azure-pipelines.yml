@@ -28,3 +28,10 @@ steps:
     packageType: sdk
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: "dotner build $(buildConfiguration)"
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    testRunTitle: 'xUnit Automated Unit Test Case - Commmand API'
