@@ -51,7 +51,7 @@ namespace CommandAPI.Tests
                Assert.Empty(result.Value);
           }
           [Fact]
-          public void GetCommandItemsReturnsOneItemWhenDBHasOneObject()
+          public void GetCommandItems_ReturnsOneItem_WhenDBHasOneObject()
           {
                //Action 1 Test : GET /api/commands
                //Test# 1.2 : Condition = Request Objects when 1 exists : Expected Result = Return Single Object
@@ -71,7 +71,7 @@ namespace CommandAPI.Tests
                Assert.Single(result.Value);
           }
           [Fact]
-          public void GetCommandItemsReturnNItemsWhenDBHasNObjects()
+          public void GetCommandItems_ReturnNItems_WhenDBHasNObjects()
           {
                //Action 1 Test : GET /api/commands
                //Test# 1.3 : Condition = Request Objects when N exists : Expected Result = Return Count of n Objects
@@ -98,7 +98,7 @@ namespace CommandAPI.Tests
                Assert.Equal(2, result.Value.Count());
           }
           [Fact]
-          public void GetCommandItemsReturnsTheCorrectType()
+          public void GetCommandItems_ReturnsTheCorrectType()
           {
                //Action 1 Test : GET /api/commands
                //Test# 1.4 : Condition = Request Objects : Expected Result = Return the correct “type”               
@@ -109,7 +109,7 @@ namespace CommandAPI.Tests
           }
 
           [Fact]
-          public void GetCommandItemReturnsNullResultWhenInvalidID()
+          public void GetCommandItem_ReturnsNullResult_WhenInvalidID()
           {
                //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
                //Test# 2.1 : Condition = Resource ID is invalid (Does not exist in DB) : Result = Null Object Value Result
@@ -124,7 +124,7 @@ namespace CommandAPI.Tests
           }
 
           [Fact]
-          public void GetCommandItemReturns404NotFoundWhenInvalidID()
+          public void GetCommandItem_Returns404NotFound_WhenInvalidID()
           {
                //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
                //Test# 2.2 : Condition = Resource ID is invalid (Does not exist in DB) : Result = 404 Not Found Return Code
@@ -138,7 +138,7 @@ namespace CommandAPI.Tests
                Assert.IsType<NotFoundResult>(result.Result);               
           }
           [Fact]
-          public void GetCommandItemReturnsTheCorrectType()
+          public void GetCommandItem_ReturnsTheCorrectType()
           {
                //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
                //Test# 2.3 : Condition = Resource ID is valid (Exists in the DB) : Result = Correct Return Type
@@ -158,7 +158,7 @@ namespace CommandAPI.Tests
                Assert.IsType<ActionResult<Command>>(result);
           }
           [Fact]
-          public void GetCommandItemReturnsTheCorrectResouce()
+          public void GetCommandItem_ReturnsTheCorrectResouce()
           {
                //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
                //Test# 2.4 : Condition = Resource ID is valid (Exists in the DB) : Result = Correct Resource Returned
@@ -178,7 +178,7 @@ namespace CommandAPI.Tests
                Assert.Equal(cmdId, result.Value.Id);               
           }
           [Fact]
-          public void PostCommandItemObjectCountIncrementWhenValidObject()
+          public void PostCommandItem_ObjectCountIncrement_WhenValidObject()
           {
                //Action 3 Test : POST /api/commands : Create a new resource
                //Test# 3.1 : Condition = Valid Object Submitted for Creation : Result = Object count increments by 1
@@ -196,7 +196,7 @@ namespace CommandAPI.Tests
                Assert.Equal(oldCount+1, _dbContext.CommandItems.Count());
           }
           [Fact]
-          public void PostCommandItemReturns201CreatedWhenValidObject()
+          public void PostCommandItem_Returns201Created_WhenValidObject()
           {
                //Action 3 Test : POST /api/commands : Create a new resource
                //Test# 3.2 : Condition = Valid Object Submitted for Creation 201 : Result = Created Return Code
@@ -302,6 +302,78 @@ namespace CommandAPI.Tests
                var result = _dbContext.CommandItems.Find(_command1.Id);
                //Assert
                Assert.Equal(_command1.HowTo, result.HowTo);
-          }                   
+          }
+          [Fact]
+          public void DeleteCommandItem_ObjectsDecrement_WhenValidObjectID()
+          {
+               //Action 5 Test : DELETE /api/commands/{Id} : Delete a single resource, (by Id)
+               //Test# 5.1 : Condition = Valid Object Id Submitted for Delete : Result = Object Count Decrements by 1
+
+               //Arrange
+               var _command = new Command {
+                    HowTo = "Do unit test",
+                    Platform = "xUNit Platform",
+                    CommandLine = "dotnet test"
+               };
+               _dbContext.CommandItems.Add(_command);
+               _dbContext.SaveChanges();
+               int cmdId = _command.Id;
+               int objCount = _dbContext.CommandItems.Count();
+               //Act
+               _controller.DeleteCommandItem(cmdId);
+               //Assert
+               Assert.Equal(objCount-1, _dbContext.CommandItems.Count());
+          }
+          [Fact]
+          public void DeleteCommandItem_Returns200OK_WhenValidObjectID()
+          {
+               //Action 5 Test : DELETE /api/commands/{Id} : Delete a single resource, (by Id)
+               //Test# 5.2 : Condition = Valid Object Id Submitted for Delete : Result = 200 OK Return Code
+
+               //Arrange
+               var _command = new Command {
+                    HowTo = "Do unit test",
+                    Platform = "xUNit Platform",
+                    CommandLine = "dotnet test"
+               };
+               _dbContext.CommandItems.Add(_command);
+               _dbContext.SaveChanges();
+               int cmdId = _command.Id;
+               //Act
+               var result = _controller.DeleteCommandItem(cmdId);
+               //Assert
+               Assert.Null(result.Result);
+          }
+          [Fact]
+          public void DeleteCommandItem_Returns404NotFound_WhenValidObjectID()
+          {
+               //Action 5 Test : DELETE /api/commands/{Id} : Delete a single resource, (by Id)
+               //Test# 5.3 : Condition = Invalid Object Id Submitted for Delete : Result = 400 Bad Request Return Code               
+               //Arrange - nothing to arrange and this is simple test case
+               //Act
+               var result = _controller.DeleteCommandItem(-1);
+               //Assert
+               Assert.IsType<NotFoundResult>(result.Result);
+          }
+          [Fact]
+          public void DeleteCommandItem_ObjectCountNotDecremented_WhenValidObjectID()
+          {
+               //Action 5 Test : DELETE /api/commands/{Id} : Delete a single resource, (by Id)
+               //Test# 5.4 : Condition = Invalid Object Id Submitted for Delete : Result = Object count remains unchanged              
+               //Arrange
+               var _command = new Command {
+                    HowTo = "Do unit test",
+                    Platform = "xUNit Platform",
+                    CommandLine = "dotnet test"
+               };
+               _dbContext.CommandItems.Add(_command);
+               _dbContext.SaveChanges();
+               int cmdId = _command.Id;
+               int objCount = _dbContext.CommandItems.Count();
+               //Act
+               var result = _controller.DeleteCommandItem(cmdId + 1);
+               //Assert
+               Assert.Equal(objCount,_dbContext.CommandItems.Count());
+          }
      }
 }
