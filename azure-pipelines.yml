@@ -35,3 +35,14 @@ steps:
     command: test
     projects: '**/*Tests/*.csproj'
     testRunTitle: 'xUnit Automated Unit Test Case - Commmand API'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: publish
+    publishWebProjects: false
+    projects: 'CommandAPI/*.csproj'
+    arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'publish artificats'
