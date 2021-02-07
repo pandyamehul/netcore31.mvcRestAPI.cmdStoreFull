@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "name": {
+            "value": "netcore31mvcRestAPIcmdStoreWebAPI"
+        },
+        "hostingPlanName": {
+            "value": "netcore31mvcRestAPIcmdStoreAppSvc"
+        },
+        "hostingEnvironment": {
+            "value": ""
+        },
+        "location": {
+            "value": "West Europe"
+        },
+        "sku": {
+            "value": "Free"
+        },
+        "workerSize": {
+            "value": "0"
+        },
+        "serverFarmResourceGroup": {
+            "value": "mehul02-Learning-Azure"
+        },
+        "skuCode": {
+            "value": "F1"
+        },
+        "subscriptionId": {
+            "value": "9055cafd-30ab-42af-93a1-d8054ea55903"
+        }
+    }
+}

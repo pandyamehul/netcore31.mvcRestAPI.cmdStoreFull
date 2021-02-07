@@ -1,0 +1,51 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "containerName": {
+            "value": "netcore31-mvcrestapi-cmdstore-appdb"
+        },
+        "location": {
+            "value": "westeurope"
+        },
+        "imageType": {
+            "value": "Public"
+        },
+        "imageName": {
+            "value": "mcr.microsoft.com/azuredocs/aci-helloworld:latest"
+        },
+        "osType": {
+            "value": "Linux"
+        },
+        "numberCpuCores": {
+            "value": "1"
+        },
+        "memory": {
+            "value": "0.5"
+        },
+        "restartPolicy": {
+            "value": "OnFailure"
+        },
+        "environmentVariable0": {
+            "value": null
+        },
+        "ipAddressType": {
+            "value": "Public"
+        },
+        "ports": {
+            "value": [
+                {
+                    "port": "80",
+                    "protocol": "TCP"
+                },
+                {
+                    "port": "5432",
+                    "protocol": "TCP"
+                }
+            ]
+        },
+        "dnsNameLabel": {
+            "value": "netcore31-mvcrestapi-cmdstore-appdb"
+        }
+    }
+}
