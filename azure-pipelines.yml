@@ -16,9 +16,9 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayName: ".Net Core 3.1.x"
+  displayName: ".Net Core 5.0.x"
   inputs:
-    version: '3.1.x'
+    version: '5.0.x'
     packageType: sdk
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: "dotner build $(buildConfiguration)"
