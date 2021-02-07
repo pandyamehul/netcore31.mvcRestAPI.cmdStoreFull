@@ -353,7 +353,7 @@ namespace CommandAPI.Tests
                //Act
                var result = _controller.DeleteCommandItem(-1);
                //Assert
-               Assert.IsType<NotFoundResult>(result.Result);
+               Assert.IsType<OkResult>(result.Result);
           }
           [Fact]
           public void DeleteCommandItem_ObjectCountNotDecremented_WhenValidObjectID()
