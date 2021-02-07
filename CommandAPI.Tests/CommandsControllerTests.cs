@@ -107,5 +107,75 @@ namespace CommandAPI.Tests
                //Assert
                Assert.IsType<ActionResult<IEnumerable<Command>>>(result);
           }
+
+          [Fact]
+          public void GetCommandItemReturnsNullResultWhenInvalidID()
+          {
+               //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
+               //Test# 2.1 : Condition = Resource ID is invalid (Does not exist in DB) : Result = Null Object Value Result
+
+               //Arrange
+               //DB should be empty, any ID will be invalid
+
+               //Act
+               var result = _controller.GetCommandItem(0);
+               //Assert
+               Assert.Null(result.Value);
+          }
+
+          [Fact]
+          public void GetCommandItemReturns404NotFoundWhenInvalidID()
+          {
+               //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
+               //Test# 2.2 : Condition = Resource ID is invalid (Does not exist in DB) : Result = 404 Not Found Return Code
+
+               //Arrange
+               //DB should be empty, any ID will be invalid
+
+               //Act
+               var result = _controller.GetCommandItem(0);
+               //Assert
+               Assert.IsType<NotFoundResult>(result.Result);               
+          }
+          [Fact]
+          public void GetCommandItemReturnsTheCorrectType()
+          {
+               //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
+               //Test# 2.3 : Condition = Resource ID is valid (Exists in the DB) : Result = Correct Return Type
+
+               //Arrange
+               var command = new Command {
+                    HowTo = "Do unit test",
+                    Platform = "xUNit Platform",
+                    CommandLine = "dotnet test"
+               };
+               _dbContext.CommandItems.Add(command);
+               _dbContext.SaveChanges();
+               int cmdId = command.Id;
+               //Act
+               var result = _controller.GetCommandItem(cmdId);
+               //Assert
+               Assert.IsType<ActionResult<Command>>(result);
+          }
+          [Fact]
+          public void GetCommandItemReturnsTheCorrectResouce()
+          {
+               //Action 2 Test : /api/commands/{Id} : Read : Read a single resource, (by Id)
+               //Test# 2.4 : Condition = Resource ID is valid (Exists in the DB) : Result = Correct Resource Returned
+
+               //Arrange
+               var command = new Command {
+                    HowTo = "Do unit test",
+                    Platform = "xUNit Platform",
+                    CommandLine = "dotnet test"
+               };
+               _dbContext.CommandItems.Add(command);
+               _dbContext.SaveChanges();
+               int cmdId = command.Id;
+               //Act
+               var result = _controller.GetCommandItem(cmdId);
+               //Assert
+               Assert.Equal(cmdId, result.Value.Id);               
+          }
      }
 }

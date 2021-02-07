@@ -18,6 +18,17 @@ namespace CommandAPI.Controllers
               return _context.CommandItems;
          }
 
+         [HttpGet]
+         public ActionResult<Command> GetCommandItem(int id)
+         {
+             Command cmditem = _context.CommandItems.Find(id);
+             if (cmditem == null)
+             {
+                 return NotFound();
+             }
+             return cmditem;
+         }
+
      //    [HttpGet]
      //    public ActionResult<IEnumerable<string>> Get()
      //    {
