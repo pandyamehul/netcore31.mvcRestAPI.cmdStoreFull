@@ -5,6 +5,7 @@ using CommandAPI.Models;
 
 namespace CommandAPI.Controllers
 {
+    //Command API Controller Class
     [Route("api/[controller]")]
     [ApiController]
     public class CommandsController : ControllerBase
