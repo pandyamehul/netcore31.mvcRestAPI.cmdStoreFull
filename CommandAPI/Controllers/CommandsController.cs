@@ -20,7 +20,7 @@ namespace CommandAPI.Controllers
               return _context.CommandItems;
          }
          //GET api/commands/{id}
-         [HttpGet]
+         [HttpGet("{id}")]
          public ActionResult<Command> GetCommandItem(int id)
          {
              Command cmditem = _context.CommandItems.Find(id);
