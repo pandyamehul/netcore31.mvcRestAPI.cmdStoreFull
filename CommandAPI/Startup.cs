@@ -22,11 +22,13 @@ namespace CommandAPI
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            Console.WriteLine("Starting Configure Service");
             var builder = new NpgsqlConnectionStringBuilder();
             builder.ConnectionString = _configuration.GetConnectionString("PostgreSqlConnection");
+            Console.WriteLine(_configuration.GetConnectionString("PostgreSqlConnection"));
             builder.Username = _configuration["UserID"];
             builder.Password = _configuration["Password"];
-
+            Console.WriteLine("Adding DB Context");
             services.AddDbContext<CommandContext> (opt => opt.UseNpgsql(builder.ConnectionString));
 
             services.AddControllers();
@@ -35,6 +37,7 @@ namespace CommandAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, CommandContext context)
         {
+            Console.WriteLine("Configuring DB");
             context.Database.Migrate();
             if (env.IsDevelopment())
             {
