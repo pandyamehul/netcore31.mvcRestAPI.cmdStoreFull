@@ -1,0 +1,56 @@
+Display name: DEV_CommandAPI
+Application (client) ID: dfdac05a-8da7-4038-9abf-d488d6a548f3
+Directory (tenant) ID : b3ec77b2-0c92-44c7-9229-4deec0d47211
+Object ID : 23906a99-8d27-4aa5-a2af-7aaa47315466
+Application ID URI: api://dfdac05a-8da7-4038-9abf-d488d6a548f3
+
+Display name: DEV_Client_CommandAPI
+Application (client) ID: 43fcdbf0-c16d-4c6a-a8e5-2f9711bec7cf
+Directory (tenant) ID : b3ec77b2-0c92-44c7-9229-4deec0d47211
+Object ID : e68f611e-a778-4ec1-ac47-cec21d2311a4
+Application ID URI: api://43fcdbf0-c16d-4c6a-a8e5-2f9711bec7cf
+Secret: i0Ewvq-0WSkLCy_2dX_6.Ze979fSBHQnU.
+ID: aa71d4a5-0bf7-4aeb-83c5-ea22594c4954
+
+
+Path - C:\Users\Unmanaged\AppData\Roaming\Microsoft\UserSecrets\4b996b8c-b2cc-4e31-8b07-c59d5407538b
+Path - %APPDATA%\Microsoft\UserSecrets\
+
+docker run --name some-postgres -e POSTGRES_PASSWORD=pa55w0rd! -p 5432:5432 -d postgres
+
+
+
+Display name: DEV_CommandAPI
+Application (client) ID: 1aaabfd1-88c7-49ee-8495-d05d0a7ab398
+Directory (tenant) ID : b3ec77b2-0c92-44c7-9229-4deec0d47211
+Object ID : 4fdf0db1-1336-4eeb-a56e-f68b7b95cf72
+Application ID URI: api://1aaabfd1-88c7-49ee-8495-d05d0a7ab398
+Secret Name : Dev_API_Client
+Secret: AOz2y~dHV8e5k-L.NaH34jFL4io4cxbL.-
+ID: 919619e2-ba31-475f-b866-b618205b3b3a
+
+
+Display name: DEV_Client_CommandAPI
+Application (client) ID: f36b7a43-7721-4af8-94e8-d9ca472c4eca
+Directory (tenant) ID : b3ec77b2-0c92-44c7-9229-4deec0d47211
+Object ID : aa0ac931-f240-4b39-976a-0db9981b1a66
+Application ID URI: api://43fcdbf0-c16d-4c6a-a8e5-2f9711bec7cf
+Secret Name : Dev_API_Client
+Secret: AOz2y~dHV8e5k-L.NaH34jFL4io4cxbL.-
+ID: 919619e2-ba31-475f-b866-b618205b3b3a
+api://1aaabfd1-88c7-49ee-8495-d05d0a7ab398/DaemonAppRole
+
+Display name: Stage_CommandAPI
+Application (client) ID : eb4a9573-144f-4ada-b5d8-b70c6cebd7b4
+Object ID : 76f60fb9-132e-4448-b642-733b650fa1cf
+Directory (tenant) ID : b3ec77b2-0c92-44c7-9229-4deec0d47211
+Application ID URI : api://eb4a9573-144f-4ada-b5d8-b70c6cebd7b4
+
+Display name : Stage_Client_CommandAPI
+Application (client) ID : afeb46c2-fbf4-4ad2-a38b-18203c10a2ff
+Object ID : 7b649ba8-9f89-4b4e-936f-9d141f7db3c1
+Directory (tenant) ID : b3ec77b2-0c92-44c7-9229-4deec0d47211
+Secret Name : Stage_API_Client
+Secret : Jky4b6izxcXL-kTG~47V3q4bvVF~5_C3Tx
+Secret Expiry: 9/13/2021
+Secret Id : de2a75dc-2c0c-4525-afb9-2919dc488e8a

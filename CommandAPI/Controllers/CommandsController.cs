@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using CommandAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CommandAPI.Controllers
 {
@@ -14,12 +15,14 @@ namespace CommandAPI.Controllers
          public CommandsController(CommandContext commandContext) => _context = commandContext;
 
          //GET api/commands
+         [Authorize]
          [HttpGet]
          public ActionResult<IEnumerable<Command>> GetCommandItems()
          {
               return _context.CommandItems;
          }
          //GET api/commands/{id}
+         [Authorize]
          [HttpGet("{id}")]
          public ActionResult<Command> GetCommandItem(int id)
          {
@@ -31,6 +34,7 @@ namespace CommandAPI.Controllers
              return cmditem;
          }
          //POST: api/commands
+         [Authorize]
          [HttpPost]
          public ActionResult<Command> PostCommandItem(Command cmd)
          {
@@ -46,6 +50,7 @@ namespace CommandAPI.Controllers
              return CreatedAtAction("GetCommandItem", new Command { Id = cmd.Id}, cmd);
          }
          //PUT: api/commands/{Id}
+         [Authorize]
          [HttpPut("{id}")]
          public ActionResult PutCommandItem(int id, Command _command)
          {
@@ -58,6 +63,7 @@ namespace CommandAPI.Controllers
              return NoContent();
          }
          //DELETE: api/commands/{Id}
+         [Authorize]
          [HttpDelete("{id}")]
          public ActionResult<Command> DeleteCommandItem(int id)
          {

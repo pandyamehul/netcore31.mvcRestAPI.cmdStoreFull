@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandAPI", "CommandAPI\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandAPI.Tests", "CommandAPI.Tests\CommandAPI.Tests.csproj", "{0FDA9DBC-0C1F-4212-B2EC-BBF2638A045C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandAPIClientConsole", "CommandAPIClientConsole\CommandAPIClientConsole.csproj", "{2189F283-E560-4C24-9BCB-79353EA46537}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,5 +46,17 @@ Global
 		{0FDA9DBC-0C1F-4212-B2EC-BBF2638A045C}.Release|x64.Build.0 = Release|Any CPU
 		{0FDA9DBC-0C1F-4212-B2EC-BBF2638A045C}.Release|x86.ActiveCfg = Release|Any CPU
 		{0FDA9DBC-0C1F-4212-B2EC-BBF2638A045C}.Release|x86.Build.0 = Release|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Debug|x64.Build.0 = Debug|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Debug|x86.Build.0 = Debug|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Release|x64.ActiveCfg = Release|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Release|x64.Build.0 = Release|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Release|x86.ActiveCfg = Release|Any CPU
+		{2189F283-E560-4C24-9BCB-79353EA46537}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
